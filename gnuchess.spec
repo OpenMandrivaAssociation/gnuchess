@@ -1,6 +1,6 @@
 %define	name	gnuchess
 %define version 5.07
-%define release %mkrel 9
+%define release %mkrel 10
 
 %define book_version 1.01
 
