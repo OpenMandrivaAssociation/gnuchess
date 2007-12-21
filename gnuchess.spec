@@ -15,6 +15,7 @@ Source3:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
 Patch0:         gnuchess-5.07-gcc4.patch.bz2 
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/chess/
+Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPL and Public Domain
 BuildRequires:	readline-devel
 BuildRequires:	ncurses-devel
