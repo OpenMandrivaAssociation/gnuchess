@@ -1,13 +1,12 @@
 %define	name	gnuchess
 %define version 5.07
-%define release %mkrel 11
 
 %define book_version 1.01
 
 Summary:	The GNU chess program
 Name:		%{name}
 Version:	%{version}
-Release:	%{release}
+Release:	%mkrel 12
 Source0:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
