@@ -11,7 +11,8 @@ Source0:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
 Source3:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
-Patch0:         gnuchess-5.07-gcc4.patch.bz2 
+Patch0:         gnuchess-5.07-gcc4.patch
+Patch1:		gnuchess-5.07-getline.patch
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/chess/
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -40,6 +41,7 @@ historic games played between masters and grandmasters.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 gzip -dc %{SOURCE2} > book.pgn
 
 %build
