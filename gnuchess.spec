@@ -6,7 +6,7 @@
 Summary:	The GNU chess program
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 15
+Release:	%mkrel 16
 Source0:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
