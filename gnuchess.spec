@@ -1,12 +1,12 @@
 %define	name	gnuchess
-%define version 5.07
+%define version 6.0.0
 
-%define book_version 1.01
+%define book_version 1.02
 
 Summary:	The GNU chess program
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 16
+Release:	%mkrel 1
 Source0:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
@@ -40,12 +40,10 @@ historic games played between masters and grandmasters.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 gzip -dc %{SOURCE2} > book.pgn
 
 %build
-%configure2_5x	--bindir=%{_gamesbindir}
+%configure2_5x	--bindir=%{_gamesbindir} --datadir=%{_gamesdatadir}
 %make
 
 # create book
@@ -55,13 +53,14 @@ echo -e 'book add book.pgn\nquit' | ./src/gnuchess -
 rm -rf $RPM_BUILD_ROOT
 %{makeinstall_std}
 
-install -m0644 book.dat -D %{buildroot}%{_gamesdatadir}/gnuchess/book.dat
+install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-, root, root)
-%doc AUTHORS ChangeLog NEWS doc/README
+%doc AUTHORS ChangeLog NEWS README
 %{_gamesbindir}/*
 %{_gamesdatadir}/gnuchess
+%{_infodir}/*
