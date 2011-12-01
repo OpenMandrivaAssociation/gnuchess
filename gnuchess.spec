@@ -48,13 +48,13 @@ gzip -dc %{SOURCE2} > book.pgn
 echo -e 'book add book.pgn\nquit' | ./src/gnuchess -
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %{makeinstall_std}
 
 install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-, root, root)
