@@ -1,16 +1,14 @@
-%define	name	gnuchess
-%define version 6.0.0
-
 %define book_version 1.02
 
 Summary:	The GNU chess program
-Name:		%{name}
-Version:	%{version}
+Name:		gnuchess
+Version:	6.0.1
 Release:	%mkrel 1
 Source0:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
 Source3:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
+Patch0:		gnuchess-6.0.1-readonly_book.patch
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/chess/
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -38,6 +36,7 @@ historic games played between masters and grandmasters.
 
 %prep
 %setup -q
+%patch0 -p1
 gzip -dc %{SOURCE2} > book.pgn
 
 %build
@@ -49,7 +48,7 @@ echo -e 'book add book.pgn\nquit' | ./src/gnuchess -
 
 %install
 rm -rf %{buildroot}
-%{makeinstall_std}
+%makeinstall_std
 
 install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
 
