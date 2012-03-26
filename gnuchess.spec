@@ -2,13 +2,12 @@
 
 Summary:	The GNU chess program
 Name:		gnuchess
-Version:	6.0.1
+Version:	6.0.2
 Release:	%mkrel 1
 Source0:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
 Source3:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
-Patch0:		gnuchess-6.0.1-readonly_book.patch
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/chess/
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -36,7 +35,6 @@ historic games played between masters and grandmasters.
 
 %prep
 %setup -q
-%patch0 -p1
 gzip -dc %{SOURCE2} > book.pgn
 
 %build
@@ -44,20 +42,19 @@ gzip -dc %{SOURCE2} > book.pgn
 %make
 
 # create book
-echo -e 'book add book.pgn\nquit' | ./src/gnuchess -
+./src/%{name} --addbook book.pgn
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
 
-install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
+%__install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
 
 %clean
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README COPYING
 %{_gamesbindir}/*
 %{_gamesdatadir}/gnuchess
 %{_infodir}/*
