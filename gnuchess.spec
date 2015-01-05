@@ -2,8 +2,8 @@
 
 Summary:	The GNU chess program
 Name:		gnuchess
-Version:	6.0.3
-Release:	8
+Version:	6.2.1
+Release:	1
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
 Url:		http://www.gnu.org/software/chess/
@@ -37,7 +37,7 @@ historic games played between masters and grandmasters.
 gzip -dc %{SOURCE2} > book.pgn
 
 %build
-%configure2_5x \
+%configure \
 	--bindir=%{_gamesbindir} \
 	--datadir=%{_gamesdatadir}
 %make
@@ -48,11 +48,16 @@ echo -e 'book add book.pgn\nquit' | ./src/gnuchess -
 %install
 %makeinstall_std
 
+%find_lang %{name}
+
 install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
 
-%files
+%files -f %{name}.lang
 %doc AUTHORS ChangeLog NEWS README
 %{_gamesbindir}/*
 %{_gamesdatadir}/gnuchess
+%{_gamesdatadir}/games/plugins/*/gnuchess.png
+%{_gamesdatadir}/games/plugins/xboard/gnuchess.eng
 %{_infodir}/*
+%{_mandir}/man1/*
 
