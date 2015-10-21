@@ -1,16 +1,17 @@
 %define book_version 1.02
+%define _disable_rebuild_configure 1
 
 Summary:	The GNU chess program
 Name:		gnuchess
-Version:	6.2.1
+Version:	6.2.2
 Release:	1
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
 Url:		http://www.gnu.org/software/chess/
-Source0:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
-Source1:	ftp://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
-Source2:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
-Source3:	ftp://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
+Source0:	http://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
+Source1:	http://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
+Source2:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
+Source3:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
 
 BuildRequires:	flex
 BuildRequires:	readline-devel
