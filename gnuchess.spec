@@ -3,7 +3,7 @@
 
 Summary:	The GNU chess program
 Name:		gnuchess
-Version:	6.2.2
+Version:	6.2.5
 Release:	1
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
@@ -44,7 +44,8 @@ gzip -dc %{SOURCE2} > book.pgn
 %make
 
 # create book
-echo -e 'book add book.pgn\nquit' | ./src/gnuchess -
+./src/gnuchess --addbook book.pgn
+
 
 %install
 %makeinstall_std
