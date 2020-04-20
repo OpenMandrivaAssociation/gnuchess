@@ -3,8 +3,8 @@
 
 Summary:	The GNU chess program
 Name:		gnuchess
-Version:	6.2.5
-Release:	2
+Version:	6.2.6
+Release:	1
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
 Url:		http://www.gnu.org/software/chess/
@@ -14,7 +14,7 @@ Source2:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
 Source3:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
 
 BuildRequires:	flex
-BuildRequires:	readline-devel
+BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(ncurses)
 Provides:	chessengine
 Provides:	gnuchess-book
@@ -41,14 +41,14 @@ gzip -dc %{SOURCE2} > book.pgn
 %configure \
 	--bindir=%{_gamesbindir} \
 	--datadir=%{_gamesdatadir}
-%make
+%make_build
 
 # create book
 ./src/gnuchess --addbook book.pgn
 
 
 %install
-%makeinstall_std
+%make_install
 
 %find_lang %{name}
 
@@ -62,4 +62,3 @@ install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
 %{_gamesdatadir}/games/plugins/xboard/gnuchess.eng
 %{_infodir}/*
 %{_mandir}/man1/*
-
