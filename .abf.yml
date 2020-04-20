@@ -1,9 +1,5 @@
-removed_sources:
-  gnuchess-6.2.1.tar.gz: b15e48a716a59efbb01a2278a829fc256763c486
-  gnuchess-6.2.2.tar.gz: 98e4ef7837b84b7e1e01f4cc74e9d1831ca485e5
 sources:
   book_1.02.pgn.gz: 9b54f699b919f7f93b97a829764554fa2b7da3a1
   book_1.02.pgn.gz.sig: 86d4b3a08304fa009866b0d52132521dd4373629
-  gnuchess-6.2.2.tar.gz.sig: 1fe6d4ed5fa8d4d7cc4d79774337f86412d3fc8f
-  gnuchess-6.2.5.tar.gz: d38a485e681f391e70f8110793215a3f432c8bc2
-  gnuchess-6.2.5.tar.gz.sig: 131ba597624bb1fbd6effebbd514aef2211b8c0c
+  gnuchess-6.2.6.tar.gz: bc99afbe834f6dfaf72faee8d496c9a36ce0587b
+  gnuchess-6.2.6.tar.gz.sig: a7efd17e344875f210d863417b0d93c6f48dd949
