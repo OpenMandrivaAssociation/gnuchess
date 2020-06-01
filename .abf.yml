@@ -1,5 +1,4 @@
 sources:
   book_1.02.pgn.gz: 9b54f699b919f7f93b97a829764554fa2b7da3a1
   book_1.02.pgn.gz.sig: 86d4b3a08304fa009866b0d52132521dd4373629
-  gnuchess-6.2.6.tar.gz: bc99afbe834f6dfaf72faee8d496c9a36ce0587b
-  gnuchess-6.2.6.tar.gz.sig: a7efd17e344875f210d863417b0d93c6f48dd949
+  gnuchess-6.2.7.tar.gz: af3b66b63542a8ea461a8a5fddbef0935a99798c
