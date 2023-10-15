@@ -4,7 +4,7 @@
 Summary:	The GNU chess program
 Name:		gnuchess
 Version:	6.2.9
-Release:	2
+Release:	3
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
 Url:		http://www.gnu.org/software/chess/
@@ -39,8 +39,8 @@ gzip -dc %{SOURCE2} > book.pgn
 
 %build
 %configure \
-	--bindir=%{_gamesbindir} \
-	--datadir=%{_gamesdatadir}
+	--bindir=%{_bindir} \
+	--datadir=%{_datadir}
 %make_build
 
 # create book
@@ -52,13 +52,13 @@ gzip -dc %{SOURCE2} > book.pgn
 
 %find_lang %{name}
 
-install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
+install -m0644 book.pgn -D %{buildroot}%{_datadir}/gnuchess/book.pgn
 
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog NEWS README
-%{_gamesbindir}/*
-%{_gamesdatadir}/gnuchess
-%{_gamesdatadir}/games/plugins/*/gnuchess.png
-%{_gamesdatadir}/games/plugins/xboard/gnuchess.eng
+%{_bindir}/*
+%{_datadir}/gnuchess
+%{_datadir}/games/plugins/*/gnuchess.png
+%{_datadir}/games/plugins/xboard/gnuchess.eng
 %{_infodir}/*
 %{_mandir}/man1/*
