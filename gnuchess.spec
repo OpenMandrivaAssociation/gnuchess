@@ -13,11 +13,6 @@ Source1:	http://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
 Source3:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
 
-# OMV Patches
-# fix for: atak.cc:40:4: error: ISO C++17 does not allow 'register' storage class specifier [-Wregister] 
-# 40 |    register BitBoard *a, b, *c, d, blocker;
-Patch0:		remove_register_specifier.patch
-
 BuildRequires:	flex
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(ncurses)
@@ -44,6 +39,8 @@ gzip -dc %{SOURCE2} > book.pgn
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 %configure \
 	--bindir=%{_bindir} \
 	--datadir=%{_datadir}
