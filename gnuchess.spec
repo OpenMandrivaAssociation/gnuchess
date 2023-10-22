@@ -4,7 +4,7 @@
 Summary:	The GNU chess program
 Name:		gnuchess
 Version:	6.2.9
-Release:	2
+Release:	3
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
 Url:		http://www.gnu.org/software/chess/
@@ -36,11 +36,17 @@ historic games played between masters and grandmasters.
 %prep
 %setup -q
 gzip -dc %{SOURCE2} > book.pgn
+%autopatch -p1
 
 %build
+# As of Clang 17: 
+# atak.cc:40:4: error: ISO C++17 does not allow 'register' storage class specifier [-Wregister]
+# 40 |    register BitBoard *a, b, *c, d, blocker;
+export CC=gcc
+export CXX=g++
 %configure \
-	--bindir=%{_gamesbindir} \
-	--datadir=%{_gamesdatadir}
+	--bindir=%{_bindir} \
+	--datadir=%{_datadir}
 %make_build
 
 # create book
@@ -52,13 +58,13 @@ gzip -dc %{SOURCE2} > book.pgn
 
 %find_lang %{name}
 
-install -m0644 book.pgn -D %{buildroot}%{_gamesdatadir}/gnuchess/book.pgn
+install -m0644 book.pgn -D %{buildroot}%{_datadir}/gnuchess/book.pgn
 
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog NEWS README
-%{_gamesbindir}/*
-%{_gamesdatadir}/gnuchess
-%{_gamesdatadir}/games/plugins/*/gnuchess.png
-%{_gamesdatadir}/games/plugins/xboard/gnuchess.eng
+%{_bindir}/*
+%{_datadir}/gnuchess
+%{_datadir}/games/plugins/*/gnuchess.png
+%{_datadir}/games/plugins/xboard/gnuchess.eng
 %{_infodir}/*
 %{_mandir}/man1/*
