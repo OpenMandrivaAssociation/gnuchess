@@ -39,6 +39,9 @@ gzip -dc %{SOURCE2} > book.pgn
 %autopatch -p1
 
 %build
+# As of Clang 17: 
+# atak.cc:40:4: error: ISO C++17 does not allow 'register' storage class specifier [-Wregister]
+# 40 |    register BitBoard *a, b, *c, d, blocker;
 export CC=gcc
 export CXX=g++
 %configure \
