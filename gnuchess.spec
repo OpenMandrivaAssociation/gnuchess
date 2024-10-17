@@ -7,7 +7,7 @@ Version:	6.2.9
 Release:	3
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
-Url:		http://www.gnu.org/software/chess/
+Url:		https://www.gnu.org/software/chess/
 Source0:	http://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz
 Source1:	http://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
