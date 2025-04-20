@@ -3,8 +3,8 @@
 
 Summary:	The GNU chess program
 Name:		gnuchess
-Version:	6.2.9
-Release:	3
+Version:	6.2.11
+Release:	1
 Group:		Games/Boards
 License:	GPLv2 and Public Domain
 Url:		https://www.gnu.org/software/chess/
