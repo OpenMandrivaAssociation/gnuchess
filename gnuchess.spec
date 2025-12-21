@@ -13,6 +13,11 @@ Source1:	http://ftp.gnu.org/pub/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source2:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz
 Source3:	http://ftp.gnu.org/pub/gnu/chess/book_%{book_version}.pgn.gz.sig
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	flex
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(ncurses)
